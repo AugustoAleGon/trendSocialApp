@@ -1,0 +1,63 @@
+{
+  "name": "trendSocialApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm cache clean --force",
+    "devTools": "remotedev --hostname=localhost --port=8080 --realtime=true",
+    "reverses": "adb reverse tcp:8080 tcp:8080 && adb reverse tcp:9090 tcp:9090 ",
+    "devmenu": "adb shell input keyevent 82",
+    "runBoth": "react-native run-android && react-native run-ios",
+    "clean:android": "cd android/ && ./gradlew clean && cd .. && react-native run-android",
+    "android:build": "cd android && ./gradlew assembleRelease",
+    "android:install": "cd android && ./gradlew assembleRelease && ./gradlew installRelease",
+    "fixcode": "standard --fix"
+  },
+  "dependencies": {
+    "apisauce": "^0.14.3",
+    "react": "16.3.1",
+    "react-native": "0.55.3",
+    "react-navigation": "^1.5.11",
+    "react-navigation-redux-helpers": "^1.0.5",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-form": "^7.3.0",
+    "redux-persist": "^5.9.1",
+    "redux-saga": "^0.16.0",
+    "reduxsauce": "^0.7.0",
+    "seamless-immutable": "^7.1.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "babel-jest": "^22.4.3",
+    "babel-preset-react-native": "^4.0.0",
+    "jest": "22.4.3",
+    "react-test-renderer": "16.3.1",
+    "reactotron-react-native": "^1.14.0",
+    "reactotron-redux": "^1.13.0",
+    "reactotron-redux-saga": "^1.13.0",
+    "remote-redux-devtools": "^0.5.12",
+    "standard": "^11.0.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "API_PATH_BASE",
+      "describe",
+      "test",
+      "jest",
+      "expect",
+      "fetch",
+      "navigator",
+      "__DEV__",
+      "XMLHttpRequest",
+      "FormData",
+      "React$Element"
+    ]
+  }
+}
