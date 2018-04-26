@@ -10,6 +10,7 @@ const primaryScreens = StackNavigator({
     screen: SettingsScreen
   }
 }, {
+  initialRouteName: 'Home',
   headerMode: 'none'
 })
 
