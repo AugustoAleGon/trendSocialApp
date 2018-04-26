@@ -4,12 +4,14 @@ import {
   Text
 } from 'react-native'
 
+import styles from './Styles/SettingsScreenStyles'
+
 class SettingsScreen extends Component {
   render () {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>
-                    Hello This is mi SettingsScreen
+          Hello This is my SettingsScreen!
         </Text>
       </View>
     )
