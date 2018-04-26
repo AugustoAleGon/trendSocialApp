@@ -18,5 +18,5 @@ class RootContainer extends Component {
     )
   }
 }
-  
+
 export default connect(null, null)(RootContainer)
