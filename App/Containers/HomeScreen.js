@@ -11,6 +11,7 @@ import {connect} from 'react-redux'
 // Actions
 import socialActions from '../Redux/Reducers/social'
 
+import {formattingTime} from '../Lib/Utils'
 import PostBox from '../Components/PostBox'
 // Importing Styles
 import styles from './Styles/HomeScreenStyles'
@@ -25,7 +26,7 @@ class HomeScreen extends Component {
     if (item.text) {
       return (
         <PostBox
-          date={item.created_at}
+          date={formattingTime(item.created_at)}
           author={item.user.name}
           message={item.text} />
       )
@@ -33,7 +34,6 @@ class HomeScreen extends Component {
   }
 
   render () {
-    console.log('This is my state: ', this.props.postList.postList)
     return (
       <View style={styles.container}>
         <View style={styles.headerContainer}>
