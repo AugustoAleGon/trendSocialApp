@@ -10,6 +10,7 @@ import {connect} from 'react-redux'
 // Actions
 import socialActions from '../Redux/Reducers/social'
 
+import PostBox from '../Components/PostBox'
 // Importing Styles
 import styles from './Styles/HomeScreenStyles'
 import {Colors} from '../Themes'
@@ -43,6 +44,7 @@ class HomeScreen extends Component {
             </TouchableOpacity>
           </View>
         </View>
+        <PostBox/>
       </View>
     )
   }

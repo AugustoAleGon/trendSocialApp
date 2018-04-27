@@ -8,7 +8,8 @@ export default StyleSheet.create({
   headerContainer: {
     ...ApplicationStyles.screen.header,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 10
   },
   rowContainer: {
     flexDirection: 'row',
