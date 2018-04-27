@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  FlatList
 } from 'react-native'
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import {bindActionCreators} from 'redux'
@@ -18,6 +19,17 @@ import {Colors} from '../Themes'
 class HomeScreen extends Component {
   componentDidMount () {
     this.props.getSocialPost()
+  }
+
+  _renderItem = ({item}) => {
+    if (item.text) {
+      return (
+        <PostBox
+          date={item.created_at}
+          author={item.user.name}
+          message={item.text} />
+      )
+    }
   }
 
   render () {
@@ -44,7 +56,12 @@ class HomeScreen extends Component {
             </TouchableOpacity>
           </View>
         </View>
-        <PostBox/>
+        <View>
+          <FlatList
+            renderItem={this._renderItem}
+            keyExtractor={item => item.id_str}
+            data={this.props.postList.postList} />
+        </View>
       </View>
     )
   }
