@@ -2,9 +2,10 @@ import { combineReducers } from 'redux'
 import configureStore from './CreateStore'
 import rootSaga from '../Sagas/'
 import { reducer as formReducer } from 'redux-form'
-// import { resettableReducer } from 'reduxsauce'
+import { resettableReducer } from 'reduxsauce'
 import {reducer as nav} from './NavigationRedux'
-// import {reducer as dog} from './Reducers/dog'
+import {reducer as social} from './Reducers/social'
+import {reducer as settings} from './Reducers/settings'
 import { persistReducer } from 'redux-persist'
 import AsyncStorage from 'redux-persist/lib/storage'
 
@@ -16,19 +17,24 @@ export default () => {
     // whitelist: [], Optionally, just specify the keys you DO want stored to
     // persistence. An empty array means 'don't store any reducers' -> infinitered/ignite#409
   }
-  // const dogConfig = {
-  //   key: 'dog',
-  //   storage: AsyncStorage
-  // }
-  // const resettable = resettableReducer('LOG_OUT')
+  const socialConfig = {
+    key: 'social',
+    storage: AsyncStorage
+  }
+  const settingsConfig = {
+    key: 'settings',
+    storage: AsyncStorage
+  }
+  const resettable = resettableReducer('LOG_OUT')
   /* ------------- Assemble The Reducers ------------- */
   const rootReducer = persistReducer(
     rootConfig,
     combineReducers({
       nav: nav,
       // All my reducers are here:
-      form: formReducer
-      // dog: persistReducer(dogConfig, resettable(dog)),
+      form: formReducer,
+      social: persistReducer(socialConfig, resettable(social)),
+      settings: persistReducer(settingsConfig, resettable(settings))
     })
   )
 

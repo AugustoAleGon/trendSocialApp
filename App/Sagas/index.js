@@ -1,10 +1,17 @@
 /*
     Index of Saga
 */
+import { takeLatest } from 'redux-saga/effects'
 
 /* ------------- Types ------------- */
+import { socialTypes } from '../Redux/Reducers/social'
 
 /* ------------- Sagas ------------- */
+
+import {
+  getSocialPost,
+  getLimitPost
+} from './socialSaga'
 
 /* ------------- API ------------- */
 
@@ -14,8 +21,8 @@
 export default function * root () {
   yield [
     // some sagas only receive an action
-    // Main Authentication
-    // Authentication Sagas
-    // dog sagas
+    // social sagas
+    takeLatest(socialTypes.GET_SOCIAL_POST, getSocialPost),
+    takeLatest(socialTypes.GET_LIMIT_POST, getLimitPost)
   ]
 }
